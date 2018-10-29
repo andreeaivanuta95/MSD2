@@ -25,7 +25,7 @@ import org.junit.runner.RunWith;
 public class TestDataServiceCDIArq {
 	private static Logger logger = Logger.getLogger(TestDataServiceCDIArq.class.getName());
 	
-	// Arquilian infrastructure
+	// Arquilian infrastructure   
 	@Inject
 	private DataService service;
 	
