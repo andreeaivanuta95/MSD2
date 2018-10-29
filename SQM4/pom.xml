@@ -8,7 +8,9 @@
 	<name>SQM4</name> 
 	<packaging>war</packaging>
 
-
+	
+	<!-- http://www.mastertheboss.com/jboss-frameworks/maven-tutorials/jboss-maven/using-wildfly-boms -->
+	<!-- http://www.mastertheboss.com/jboss-server/wildfly-8/maven-configuration-for-java-ee-7-projects-on-wildfly -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.jboss.bom>13.0.0.Final</version.jboss.bom>
