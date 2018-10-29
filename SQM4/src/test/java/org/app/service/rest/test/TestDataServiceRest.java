@@ -35,6 +35,9 @@ public class TestDataServiceRest {
         String value = response.readEntity(String.class);
         response.close(); 
         
+        
+        //test
+        
         System.out.println("REST Response >>>>>>>>> " + value);
 	}
 
