@@ -95,4 +95,5 @@ public class Bugs {
 	private String status;
 	private Developer asignee;
 	private Tester reporter;
+	
 }
