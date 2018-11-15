@@ -1,10 +1,18 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
-public class User {
+@Inheritance(strategy=InheritanceType.JOINED)
+@Table(name="ALL_USERS")
+//@MappedSuperclass 
+public class User implements Serializable{
 	
 	@Id
 	private String userName;

@@ -1,32 +1,129 @@
 package org.app.service.entities;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.*;
 
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
-public class Projects {
+public class Projects implements Serializable{
 	
-	@Override
-	public String toString() {
-		return "Projects [idProject=" + idProject + ", title=" + title + ", feature=" + feature + ", description="
-				+ description + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + "]";
+	@Id
+	@GeneratedValue
+	private Integer idProject;
+	private String title;
+	private String description;
+	private Date startDate;
+	private Date endDate;
+	private String status;
+	@ManyToOne
+	private ProjectManager projectOwner;
+	
+	@OneToMany(cascade = ALL)
+	private List<Features> features = new ArrayList<>();
+
+	public Projects(Integer idProject, String title, String description, Date startDate, Date endDate, String status,
+			ProjectManager projectOwner, List<Features> features) {
+		super();
+		this.idProject = idProject;
+		this.title = title;
+		this.description = description;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.status = status;
+		this.projectOwner = projectOwner;
+		this.features = features;
 	}
+
+	public Projects() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getIdProject() {
+		return idProject;
+	}
+
+	public void setIdProject(Integer idProject) {
+		this.idProject = idProject;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public ProjectManager getProjectOwner() {
+		return projectOwner;
+	}
+
+	public void setProjectOwner(ProjectManager projectOwner) {
+		this.projectOwner = projectOwner;
+	}
+
+	public List<Features> getFeatures() {
+		return features;
+	}
+
+	public void setFeatures(List<Features> features) {
+		this.features = features;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
-		result = prime * result + ((feature == null) ? 0 : feature.hashCode());
+		result = prime * result + ((features == null) ? 0 : features.hashCode());
 		result = prime * result + ((idProject == null) ? 0 : idProject.hashCode());
+		result = prime * result + ((projectOwner == null) ? 0 : projectOwner.hashCode());
 		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,15 +143,20 @@ public class Projects {
 				return false;
 		} else if (!endDate.equals(other.endDate))
 			return false;
-		if (feature == null) {
-			if (other.feature != null)
+		if (features == null) {
+			if (other.features != null)
 				return false;
-		} else if (!feature.equals(other.feature))
+		} else if (!features.equals(other.features))
 			return false;
 		if (idProject == null) {
 			if (other.idProject != null)
 				return false;
 		} else if (!idProject.equals(other.idProject))
+			return false;
+		if (projectOwner == null) {
+			if (other.projectOwner != null)
+				return false;
+		} else if (!projectOwner.equals(other.projectOwner))
 			return false;
 		if (startDate == null) {
 			if (other.startDate != null)
@@ -73,70 +175,12 @@ public class Projects {
 			return false;
 		return true;
 	}
-	public Integer getIdProject() {
-		return idProject;
+
+	@Override
+	public String toString() {
+		return "Projects [idProject=" + idProject + ", title=" + title + ", description=" + description + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", status=" + status + ", projectOwner=" + projectOwner
+				+ ", features=" + features + "]";
 	}
-	public void setIdProject(Integer idProject) {
-		this.idProject = idProject;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getFeature() {
-		return feature;
-	}
-	public void setFeature(String feature) {
-		this.feature = feature;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	@Id
-	@GeneratedValue
-	private Integer idProject;
-	public Projects() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Projects(Integer idProject, String title, String feature, String description, Date startDate, Date endDate,
-			String status) {
-		super();
-		this.idProject = idProject;
-		this.title = title;
-		this.feature = feature;
-		this.description = description;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.status = status;
-	}
-	private String title;
-	private String feature;
-	private String description;
-	private Date startDate;
-	private Date endDate;
-	private String status;
+	
 }

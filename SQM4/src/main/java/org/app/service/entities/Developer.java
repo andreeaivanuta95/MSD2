@@ -1,40 +1,39 @@
 package org.app.service.entities;
 
+import static javax.persistence.CascadeType.ALL;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
 
 @Entity
-public class Developer extends User{
+public class Developer extends User implements Serializable{
 	
-	private String assignedBugs;
+	@OneToMany(cascade = ALL)
+	private List<Bugs> bugs = new ArrayList<>();
 
-	public String getAssignedBugs() {
-		return assignedBugs;
-	}
-
-	public void setAssignedBugs(String assignedBugs) {
-		this.assignedBugs = assignedBugs;
-	}
-
-	public Developer(String userName, String password, String email, String role, String assignedBugs) {
+	public Developer(String userName, String password, String email, String role, List<Bugs> bugs) {
 		super(userName, password, email, role);
-		this.assignedBugs = assignedBugs;
+		this.bugs = bugs;
 	}
 
 	public Developer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Developer(String userName, String password, String email, String role) {
 		super(userName, password, email, role);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + ((assignedBugs == null) ? 0 : assignedBugs.hashCode());
+		result = prime * result + ((bugs == null) ? 0 : bugs.hashCode());
 		return result;
 	}
 
@@ -47,17 +46,19 @@ public class Developer extends User{
 		if (getClass() != obj.getClass())
 			return false;
 		Developer other = (Developer) obj;
-		if (assignedBugs == null) {
-			if (other.assignedBugs != null)
+		if (bugs == null) {
+			if (other.bugs != null)
 				return false;
-		} else if (!assignedBugs.equals(other.assignedBugs))
+		} else if (!bugs.equals(other.bugs))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Developer [assignedBugs=" + assignedBugs + "]";
+		return "Developer [bugs=" + bugs + "]";
 	}
-
+	
+	
+	
 }
