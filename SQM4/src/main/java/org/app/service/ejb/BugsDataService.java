@@ -6,7 +6,7 @@ import javax.ejb.Remote;
 
 import org.app.service.entities.Bugs;
 
-@Remote
+@Remote   
 public interface BugsDataService {
 	
 	//create or update

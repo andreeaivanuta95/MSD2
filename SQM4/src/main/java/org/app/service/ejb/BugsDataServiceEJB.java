@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.app.service.entities.Bugs;
 
 @Stateless
-@LocalBean
+@LocalBean   
 public class BugsDataServiceEJB implements BugsDataService{
 	
 	private static Logger logger = Logger.getLogger(BugsDataServiceEJB.class.getName());
