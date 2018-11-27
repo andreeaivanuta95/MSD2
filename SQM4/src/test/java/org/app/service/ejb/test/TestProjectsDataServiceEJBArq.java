@@ -52,7 +52,7 @@ public class TestProjectsDataServiceEJBArq {
 		logger.info("DEBUG: Junit TESTING: testAddProject ");
 		Integer projectsToAdd = 3;
 		for(int i=1; i<projectsToAdd; i++) {
-			service.addProject(new Projects(100 + i,"p"+i, null, null, null, null,null,null));
+			service.addProject(new Projects(null,"p"+i, null, null, null, null,null,null));
 		}
 		Collection<Projects> projects = service.getProjects();				
 		assertTrue("Fail to read projects!", projects.size()==projectsToAdd );
@@ -88,7 +88,7 @@ public class TestProjectsDataServiceEJBArq {
 	Projects project = service.removeProjectByName(name);
 	assertTrue(project != null);
 	}
-	
+
 	@Test
 	public void test6_DeleteAllProjects() {
 		logger.info("DEBUG: Junit TESTING: testDeleteProject ");

@@ -62,7 +62,7 @@ public class TestBugsDataServiceEJBArq {
 		Integer numberOfBugsToAdd = 5;
 		
 		for (int i = 1; i <= numberOfBugsToAdd; i++) {
-			service.addBug(new Bugs(i,"title" + i, "description" + i,"P1","open", null, null, null, null));
+			service.addBug(new Bugs(null,"title" + i, "description" + i,"P1","open", null, null, null, null));
 		}
 		
 		Collection<Bugs> bugs = service.getBugs();

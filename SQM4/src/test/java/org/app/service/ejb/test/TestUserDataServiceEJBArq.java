@@ -68,7 +68,6 @@ public class TestUserDataServiceEJBArq {
 		assertTrue("Failed to read Users", users.size() > 0);
 	}
 	
-	
 	@Test
 	public void test4_DeleteUser() {
 		logger.info("DEBUG: JUnit TESTING: testDeleteUser...");
@@ -81,7 +80,6 @@ public class TestUserDataServiceEJBArq {
 		Collection<User> usersAfterDelete = service.getUsers();
 		assertTrue("Failed to read Users", usersAfterDelete.size() == 0);
 	}
-	
 	
 	
 }
