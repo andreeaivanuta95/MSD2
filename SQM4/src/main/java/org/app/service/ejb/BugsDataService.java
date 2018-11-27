@@ -11,11 +11,10 @@ public interface BugsDataService {
 	
 	//create or update
 	Bugs addBug(Bugs bugToAdd);
-	Bugs updateBug(Bugs bugToUpdate);
-	Bugs closeBug(Bugs bugToClose);	
 	
 	//delete
-	Bugs deleteBug(Bugs bugToDelete);	
+	String removeBug(Bugs bugToRemove);
+	
 	//read
 	Bugs getBugById(String bugId);
 	Collection<Bugs> getBugs();

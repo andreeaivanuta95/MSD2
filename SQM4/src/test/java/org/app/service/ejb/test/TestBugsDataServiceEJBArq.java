@@ -40,6 +40,7 @@ public class TestBugsDataServiceEJBArq {
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 
+	@Test
 	public void test1_GetMessage() {
 		logger.info("DEBUG: JUnit Testing: getMessage ...");
 		String response = service.sayRest();
@@ -47,27 +48,28 @@ public class TestBugsDataServiceEJBArq {
 		logger.info("DEBUG: EJB Response ..." + response);
 	}
 
-	@Test
-	public void test2_GetAllBugs() {
-		logger.info("DEBUG: JUnit Testing: testGetAllBugs ...");
-
-		Collection<Bugs> bugs = service.getBugs();
-		assertTrue("Failed to read bugs", bugs.size() > 0);
-	}
 
 	@Test
-	public void test3_AddBug() {
+	public void test2_AddBug() {
 		logger.info("DEBUG: JUnit Testing: testAddBugs");
 
 		Integer numberOfBugsToAdd = 5;
 		
 		for (int i = 1; i <= numberOfBugsToAdd; i++) {
-			service.addBug(new Bugs(null,"title" + i, "description" + i,"P1","open", null, null, null, null));
+			service.addBug(new Bugs(null, "title" + i, "description" + i,"P1","open", null, null, null, null));
 		}
 		
 		Collection<Bugs> bugs = service.getBugs();
 		
 		assertTrue("Failed to add Bugs!", bugs.size() == numberOfBugsToAdd);
+	}
+	
+	@Test
+	public void test3_GetAllBugs() {
+		logger.info("DEBUG: JUnit Testing: testGetAllBugs ...");
+
+		Collection<Bugs> bugs = service.getBugs();
+		assertTrue("Failed to read bugs", bugs.size() > 0);
 	}
 	
 	@Test
@@ -77,7 +79,7 @@ public class TestBugsDataServiceEJBArq {
 		Collection<Bugs> bugs = service.getBugs();
 		
 		for (Bugs bug : bugs) {
-			service.closeBug(bug);
+			service.removeBug(bug);
 		}
 		Collection<Bugs> bugsAfterDelete = service.getBugs();
 		assertTrue("Failed to read bugs",bugsAfterDelete.size() == 0);
