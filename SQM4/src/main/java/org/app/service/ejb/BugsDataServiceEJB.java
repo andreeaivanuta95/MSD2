@@ -38,31 +38,14 @@ public class BugsDataServiceEJB implements BugsDataService{
 
 	}
 
-	
 	@Override
-	public Bugs updateBug(Bugs bugToUpdate) {
-		em.persist(bugToUpdate);
+	public String removeBug(Bugs bugToRemove) {
+		bugToRemove = em.merge(bugToRemove);
+		em.remove(bugToRemove);
 		em.flush();
-		em.refresh(bugToUpdate);
-		return bugToUpdate;
-
+		return "True";
 	}
 	
-	@Override
-	public Bugs closeBug(Bugs bugToClose) {
-		bugToClose = em.merge(bugToClose);
-		em.close();
-		em.flush();
-		return bugToClose;
-	}
-	
-	@Override
-	public Bugs deleteBug(Bugs bugToDelete) {
-		bugToDelete = em.merge(bugToDelete);
-		em.remove(bugToDelete);
-		em.flush();
-		return bugToDelete;
-	}
 	@Override 
 	public Bugs getBugById(String bugId) {
 		return em.find(Bugs.class,bugId);
@@ -88,3 +71,4 @@ public class BugsDataServiceEJB implements BugsDataService{
 	}
 
 }
+
