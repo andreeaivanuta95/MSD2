@@ -20,7 +20,7 @@ public class BugsDataServiceEJB implements BugsDataService{
 	private EntityManager em;
 	
 	//Constructor
-	public BugsDataServiceEJB() { 
+	public BugsDataServiceEJB() {
 		
 	}
 	

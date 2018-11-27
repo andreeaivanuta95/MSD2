@@ -10,7 +10,7 @@ import org.app.service.entities.Bugs;
 public interface BugsDataService {
 	
 	//create or update
-	Bugs addBug(Bugs bugToAdd); 
+	Bugs addBug(Bugs bugToAdd);
 	
 	//delete
 	String removeBug(Bugs bugToRemove);
