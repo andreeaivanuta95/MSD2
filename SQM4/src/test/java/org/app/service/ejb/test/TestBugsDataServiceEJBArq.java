@@ -83,5 +83,5 @@ public class TestBugsDataServiceEJBArq {
 		}
 		Collection<Bugs> bugsAfterDelete = service.getBugs();
 		assertTrue("Failed to read bugs",bugsAfterDelete.size() == 0);
-	}
+	} 
 }
