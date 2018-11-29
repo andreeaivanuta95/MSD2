@@ -1,14 +1,12 @@
 package org.app.service.ejb;
 
 import java.util.Collection;
-
-import javax.ejb.Local;
 import javax.ejb.Remote;
 
 import org.app.service.entities.Projects;
 
 @Remote
-public interface ProjectsService {
+public interface ProjectsDataService {
 	
 	//create or update
 	Projects addProject(Projects projectToAdd);

@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
-import org.app.service.ejb.ProjectsService;
-import org.app.service.ejb.ProjectsServiceEJB;
+import org.app.service.ejb.ProjectsDataService;
+import org.app.service.ejb.ProjectsDataServiceEJB;
 import org.app.service.entities.Features;
 import org.app.service.entities.ProjectManager;
 import org.app.service.entities.Projects;
@@ -34,15 +34,15 @@ public class TestProjectsDataServiceEJBArq {
 	private static Logger logger = Logger.getLogger(TestProjectsDataServiceEJBArq.class.getName());
 	
 	@EJB
-	private static ProjectsService service;
+	private static ProjectsDataService service;
 	
 	@Deployment
 	public static Archive<?> createDeployment(){
 		return ShrinkWrap
 				.create(WebArchive.class, "SCRUM-S3-test.war")
 				.addPackage(Projects.class.getPackage())
-				.addClass(ProjectsService.class)
-				.addClass(ProjectsServiceEJB.class)
+				.addClass(ProjectsDataService.class)
+				.addClass(ProjectsDataServiceEJB.class)
 				.addAsResource("META-INF/persistence.xml")
 				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 	}

@@ -11,13 +11,13 @@ import javax.persistence.PersistenceContext;
 import org.app.service.entities.Projects;
 
 @Stateless @LocalBean
-public class ProjectsServiceEJB implements ProjectsService {
+public class ProjectsDataServiceEJB implements ProjectsDataService {
 	
-	private static Logger logger = Logger.getLogger(ProjectsServiceEJB.class.getName());
+	private static Logger logger = Logger.getLogger(ProjectsDataServiceEJB.class.getName());
 	
 	@PersistenceContext(unitName="MSD")
 	private EntityManager em;		
-	public ProjectsServiceEJB() {		
+	public ProjectsDataServiceEJB() {		
 	}
 	
 	@PostConstruct
