@@ -69,7 +69,15 @@ public class TestUserDataServiceEJBArq {
 	}
 	
 	@Test
-	public void test4_DeleteUser() {
+	public void test4_GetUserByUsername() {
+
+		logger.info("DEBUG: JUnit TESTING: testGetUserByUsername");
+		User user = service.getUserByUsername("raluca.chicos");
+		assertTrue(user != null);
+	}
+	
+	@Test
+	public void test5_DeleteUser() {
 		logger.info("DEBUG: JUnit TESTING: testDeleteUser...");
 		
 		Collection<User> users = service.getUsers();
@@ -80,6 +88,7 @@ public class TestUserDataServiceEJBArq {
 		Collection<User> usersAfterDelete = service.getUsers();
 		assertTrue("Failed to read Users", usersAfterDelete.size() == 0);
 	}
+	
 	
 	
 }
