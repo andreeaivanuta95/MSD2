@@ -71,3 +71,4 @@ public class BugsDataServiceEJB implements BugsDataService{
 	}
 
 }
+

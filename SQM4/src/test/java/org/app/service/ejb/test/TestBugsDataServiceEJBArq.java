@@ -85,3 +85,4 @@ public class TestBugsDataServiceEJBArq {
 		assertTrue("Failed to read bugs",bugsAfterDelete.size() == 0);
 	} 
 }
+

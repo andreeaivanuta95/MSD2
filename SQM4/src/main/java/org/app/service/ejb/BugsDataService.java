@@ -24,3 +24,4 @@ public interface BugsDataService {
 	//Others
 	String sayRest();
 }
+
