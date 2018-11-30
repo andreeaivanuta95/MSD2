@@ -22,7 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
-@RunWith(Arquillian.class) 
+@RunWith(Arquillian.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestUserDataServiceEJBArq {
 	private static Logger logger = Logger.getLogger(TestUserDataServiceEJBArq.class.getName());
@@ -77,7 +77,16 @@ public class TestUserDataServiceEJBArq {
 	}
 	
 	@Test
-	public void test5_DeleteUser() {
+	public void test5_GetUserByEmail() {
+
+		logger.info("DEBUG: JUnit TESTING: testGetUserByEmail");
+		User user = service.getUserByEmail("raluca.chicos@gmail.com");
+		assertTrue(user != null);
+	}
+	
+
+	@Test
+	public void test6_DeleteUser() {
 		logger.info("DEBUG: JUnit TESTING: testDeleteUser...");
 		
 		Collection<User> users = service.getUsers();
@@ -88,7 +97,5 @@ public class TestUserDataServiceEJBArq {
 		Collection<User> usersAfterDelete = service.getUsers();
 		assertTrue("Failed to read Users", usersAfterDelete.size() == 0);
 	}
-	
-	
 	
 }
