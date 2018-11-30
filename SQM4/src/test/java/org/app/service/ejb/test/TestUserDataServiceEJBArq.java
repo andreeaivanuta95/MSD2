@@ -84,7 +84,6 @@ public class TestUserDataServiceEJBArq {
 		assertTrue(user != null);
 	}
 	
-
 	@Test
 	public void test6_DeleteUser() {
 		logger.info("DEBUG: JUnit TESTING: testDeleteUser...");
