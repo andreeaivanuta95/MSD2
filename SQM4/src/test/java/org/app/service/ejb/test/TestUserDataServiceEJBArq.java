@@ -79,7 +79,7 @@ public class TestUserDataServiceEJBArq {
 	@Test
 	public void test5_GetUserByEmail() {
 
-		logger.info("DEBUG: JUnit TESTING: testGetUserByUsername");
+		logger.info("DEBUG: JUnit TESTING: testGetUserByEmail");
 		User user = service.getUserByEmail("raluca.chicos@gmail.com");
 		assertTrue(user != null);
 	}
