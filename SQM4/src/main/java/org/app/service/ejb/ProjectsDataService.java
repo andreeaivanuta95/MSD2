@@ -14,14 +14,15 @@ public interface ProjectsDataService {
 	// delete
 	String removeProject(Projects projectToDelete);
 	
-	Projects removeProjectByName(String projectName);
-	
 	//read single project
-	Projects getProjectByProjectID(Integer projectID);
+	Projects getProjectById(Integer idProject);
 	
 	//read all projects
 	Collection<Projects> getProjects();
 	
 	//custom read
-	Projects getProjectByName(String projectName);	
-	}
+	Projects getProjectByTitle(String title);	
+	
+	//Others
+	String sayRest();
+}

@@ -16,7 +16,7 @@ public interface BugsDataService {
 	String removeBug(Bugs bugToRemove);
 	
 	//read
-	Bugs getBugById(String bugId);
+	Bugs getBugById(Integer idBug);
 	Collection<Bugs> getBugs();
 	
 	Bugs getBugByTitle(String title);
@@ -24,4 +24,3 @@ public interface BugsDataService {
 	//Others
 	String sayRest();
 }
-
