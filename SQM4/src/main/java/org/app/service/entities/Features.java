@@ -144,7 +144,7 @@ public class Features implements Serializable{
 				+ ", fromProject=" + fromProject + ", bugName=" + bugName + "]";
 	}
 	
-	public static String BASE_URL = "http://localhost:8080/SQM4/rest/user/";
+	public static String BASE_URL = "http://localhost:8080/SQM4/rest/feature/";
 	@XmlElement(name = "link")
 	public AtomLink getLink() throws Exception {
 		
