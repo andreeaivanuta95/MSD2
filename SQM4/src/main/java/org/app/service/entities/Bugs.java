@@ -8,8 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
 
-
+@XmlRootElement(name="bugs") 
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Bugs implements Serializable{
 	
@@ -41,63 +46,92 @@ public class Bugs implements Serializable{
 		this.reporter = reporter;
 		this.fromFeature = fromFeature;
 	}
+	
 	public Bugs() {
 		super();
 	}
+	
+	@XmlElement
 	public Integer getIdBug() {
 		return idBug;
 	}
+	
 	public void setIdBug(Integer idBug) {
 		this.idBug = idBug;
 	}
+	
+	@XmlElement
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
+	
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@XmlElement
 	public String getPriority() {
 		return priority;
 	}
+	
 	public void setPriority(String priority) {
 		this.priority = priority;
 	}
+	
+	@XmlElement
 	public String getStatus() {
 		return status;
 	}
+	
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	@XmlElement
 	public Date getReportsDate() {
 		return reportsDate;
 	}
+	
 	public void setReportsDate(Date reportsDate) {
 		this.reportsDate = reportsDate;
 	}
+	
+	@XmlElement
 	public Developer getAsignee() {
 		return asignee;
 	}
+	
 	public void setAsignee(Developer asignee) {
 		this.asignee = asignee;
 	}
+	
+	@XmlElement
 	public Tester getReporter() {
 		return reporter;
 	}
+	
 	public void setReporter(Tester reporter) {
 		this.reporter = reporter;
 	}
+	
+	@XmlElement
 	public Features getFromFeature() {
 		return fromFeature;
 	}
+	
 	public void setFromFeature(Features fromFeature) {
 		this.fromFeature = fromFeature;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,6 +147,7 @@ public class Bugs implements Serializable{
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -169,12 +204,27 @@ public class Bugs implements Serializable{
 			return false;
 		return true;
 	}
+	
 	@Override
 	public String toString() {
 		return "Bugs [idBug=" + idBug + ", title=" + title + ", description=" + description + ", priority=" + priority
 				+ ", status=" + status + ", reportsDate=" + reportsDate + ", asignee=" + asignee + ", reporter="
 				+ reporter + ", fromFeature=" + fromFeature + "]";
 	}
+	
+	//aici cred ca trebuie modificat la url
+	public static String BASE_URL = "http://localhost:8080/SQM4/rest/bugs/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		
+		String restUrl = BASE_URL + this.getIdBug();
+		return new AtomLink(restUrl, "get-id");
+	}
+	
+	public void setLink(AtomLink link){
+		
+	}
+	
 
 	
 	

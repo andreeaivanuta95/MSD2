@@ -9,7 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
 
+@XmlRootElement(name="projects") 
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Projects implements Serializable{
 	
@@ -45,6 +52,7 @@ public class Projects implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
+	@XmlElement
 	public Integer getIdProject() {
 		return idProject;
 	}
@@ -52,7 +60,8 @@ public class Projects implements Serializable{
 	public void setIdProject(Integer idProject) {
 		this.idProject = idProject;
 	}
-
+	
+	@XmlElement
 	public String getTitle() {
 		return title;
 	}
@@ -61,6 +70,7 @@ public class Projects implements Serializable{
 		this.title = title;
 	}
 
+	@XmlElement
 	public String getDescription() {
 		return description;
 	}
@@ -69,6 +79,7 @@ public class Projects implements Serializable{
 		this.description = description;
 	}
 
+	@XmlElement
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -77,6 +88,7 @@ public class Projects implements Serializable{
 		this.startDate = startDate;
 	}
 
+	@XmlElement
 	public Date getEndDate() {
 		return endDate;
 	}
@@ -85,6 +97,7 @@ public class Projects implements Serializable{
 		this.endDate = endDate;
 	}
 
+	@XmlElement
 	public String getStatus() {
 		return status;
 	}
@@ -93,6 +106,7 @@ public class Projects implements Serializable{
 		this.status = status;
 	}
 
+	@XmlElement
 	public ProjectManager getProjectOwner() {
 		return projectOwner;
 	}
@@ -101,6 +115,7 @@ public class Projects implements Serializable{
 		this.projectOwner = projectOwner;
 	}
 
+	@XmlElementWrapper(name = "feature") @XmlElement(name = "feature")
 	public List<Features> getFeatures() {
 		return features;
 	}
@@ -183,4 +198,16 @@ public class Projects implements Serializable{
 				+ ", features=" + features + "]";
 	}
 	
+	//aici cred ca trebuie modificat la url
+	public static String BASE_URL = "http://localhost:8080/SQM4/rest/projects/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		
+		String restUrl = BASE_URL + this.getIdProject();
+		return new AtomLink(restUrl, "get-id");
+	}
+	
+	public void setLink(AtomLink link){
+		
+	}
 }
