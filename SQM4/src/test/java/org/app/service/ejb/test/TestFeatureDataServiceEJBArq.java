@@ -70,7 +70,26 @@ public class TestFeatureDataServiceEJBArq {
 	}
 	
 	@Test
-	public void test4_DeleteFeature() {
+	public void test4_GetFeatureById() {
+
+		logger.info("DEBUG: JUnit TESTING: testGetFeatureById");
+		Features feature = service.getFeatureById(11);
+		assertTrue(feature != null);
+	}
+	
+	@Test
+	public void test5_GetFeatureByTitle() {
+
+		logger.info("DEBUG: JUnit TESTING: testGetUserByEmail");
+		Features feature = service.getFeatureByTitle("titlu12");
+		assertTrue(feature != null);
+	}
+	
+	
+	
+	/*
+	@Test
+	public void test6_DeleteFeature() {
 		logger.info("DEBUG: JUnit TESTING: testDeleteFeature...");
 		
 		Collection<Features> features = service.getFeatures();
@@ -80,5 +99,7 @@ public class TestFeatureDataServiceEJBArq {
 		}
 		Collection<Features> featuresAfterDelete = service.getFeatures();
 		assertTrue("Failed to read Features", featuresAfterDelete.size() == 0);
-	}
+	}*/
+	
+	
 }
