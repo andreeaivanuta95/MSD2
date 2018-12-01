@@ -91,7 +91,7 @@ public class UserDataServiceEJB implements UserDataService{
 
 	//Others
 	public String sayRest() {
-		return "User service is on";
+		return "User service is on"; 
 	}
 
 }
