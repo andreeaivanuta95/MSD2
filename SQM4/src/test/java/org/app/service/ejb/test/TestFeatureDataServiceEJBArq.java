@@ -85,9 +85,6 @@ public class TestFeatureDataServiceEJBArq {
 		assertTrue(feature != null);
 	}
 	
-	
-	
-	/*
 	@Test
 	public void test6_DeleteFeature() {
 		logger.info("DEBUG: JUnit TESTING: testDeleteFeature...");
@@ -99,7 +96,7 @@ public class TestFeatureDataServiceEJBArq {
 		}
 		Collection<Features> featuresAfterDelete = service.getFeatures();
 		assertTrue("Failed to read Features", featuresAfterDelete.size() == 0);
-	}*/
+	}
 	
 	
 }
