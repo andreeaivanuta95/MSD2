@@ -144,6 +144,7 @@ public class Features implements Serializable{
 				+ ", fromProject=" + fromProject + ", bugName=" + bugName + "]";
 	}
 	
+	//aici cred ca trebuie modificat la url
 	public static String BASE_URL = "http://localhost:8080/SQM4/rest/feature/";
 	@XmlElement(name = "link")
 	public AtomLink getLink() throws Exception {
