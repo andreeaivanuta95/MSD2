@@ -73,7 +73,23 @@ public class TestBugsDataServiceEJBArq {
 	}
 	
 	@Test
-	public void test4_DeleteAllBugs() {
+	public void test4_GetBugById() {
+
+		logger.info("DEBUG: JUnit TESTING: testGetFeatureById");
+		Bugs bug = service.getBugById(11);
+		assertTrue(bug != null);
+	}
+	
+	@Test
+	public void test5_GetBugByTitle() {
+
+		logger.info("DEBUG: JUnit TESTING: testGetUserByEmail");
+		Bugs bug = service.getBugByTitle("titlu12");
+		assertTrue(bug != null);
+	}
+	
+	@Test
+	public void test6_DeleteAllBugs() {
 		logger.info("DEBUG: JUnit Testing: testRemoveBugs");
 		
 		Collection<Bugs> bugs = service.getBugs();
@@ -83,6 +99,5 @@ public class TestBugsDataServiceEJBArq {
 		}
 		Collection<Bugs> bugsAfterDelete = service.getBugs();
 		assertTrue("Failed to read bugs",bugsAfterDelete.size() == 0);
-	} 
+	}
 }
-

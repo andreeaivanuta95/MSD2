@@ -1,18 +1,12 @@
 package org.app.service.ejb.test;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-
 import javax.ejb.EJB;
 import org.app.service.ejb.ProjectsDataService;
 import org.app.service.ejb.ProjectsDataServiceEJB;
-import org.app.service.entities.Features;
-import org.app.service.entities.ProjectManager;
 import org.app.service.entities.Projects;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -58,40 +52,38 @@ public class TestProjectsDataServiceEJBArq {
 		assertTrue("Fail to read projects!", projects.size()==projectsToAdd );
 	}
 	
- @Test 
- public void test2_GetProjectByID() {
-	 logger.info("DEBUG: Junit TESTING: testGetProjectById ");
-		Integer id= 101;
-	Projects project = service.getProjectByProjectID(id);
-	assertTrue(project != null);
- }
-	
- @Test 
- public void test3_GetProjectByName() {
-	 logger.info("DEBUG: Junit TESTING: testGetProjectById ");
-		String name = "p1";
-	Projects project = service.getProjectByName(name);
-	assertTrue(project != null);
- }
- 
+	 @Test 
+	 public void test2_GetProjectById() {
+		logger.info("DEBUG: Junit TESTING: testGetProjectById ");
+		Projects project = service.getProjectById(11);
+		assertTrue(project != null);
+	 }
+		
+	 @Test 
+	 public void test3_GetProjectByTitle() {
+		logger.info("DEBUG: Junit TESTING: testGetProjectById ");
+		Projects project = service.getProjectByTitle("titlu1");
+		assertTrue(project != null);
+	 }
+	 
 	@Test
 	public void test4_GetAllProjects() {
 	logger.info("DEBUG: Junit TESTING: testGetProjects ");
 		Collection<Projects> projects = service.getProjects();
-		assertTrue("Fail to read projects!", projects.size()>0 );
+		assertTrue("Fail to read projects!", projects.size() > 0 );
 	}
 	
 	@Test
-	public void test5_DeleteProjectByName() {
-	logger.info("DEBUG: Junit TESTING: testGetProjects ");
-	String name = "p1";
-	Projects project = service.removeProjectByName(name);
-	assertTrue(project != null);
+	public void test5_GetMessage() {
+		logger.info("DEBUG: JUnit Testing: getMessage ...");
+		String response = service.sayRest();
+		assertNotNull("Data Service failed!", response);
+		logger.info("DEBUG: EJB Response ..." + response);
 	}
 
 	@Test
 	public void test6_DeleteAllProjects() {
-		logger.info("DEBUG: Junit TESTING: testDeleteProject ");
+		logger.info("DEBUG: JUnit TESTING: testDeleteProject ");
 		Collection<Projects> projects = service.getProjects();				
 		for(Projects p: projects) {
 			service.removeProject(p);
