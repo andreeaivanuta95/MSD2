@@ -23,7 +23,7 @@ import org.app.service.entities.Bugs;
 
 
 @Path("bugs")
-@Stateless
+@Stateless 
 @LocalBean   
 public class BugsDataServiceEJB implements BugsDataService{
 	
