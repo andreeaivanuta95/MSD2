@@ -7,18 +7,25 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlAccessType;
 
+@XmlRootElement(name="user") 
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="ALL_USERS")
-//@MappedSuperclass 
-public class User implements Serializable{ 
+
+public class User implements Serializable{
 	
 	@Id
 	private String userName;
 	private String password;
 	private String email;
 	private String role;
+	
 	
 	@Override
 	public String toString() {
@@ -72,33 +79,57 @@ public class User implements Serializable{
 		this.email = email;
 		this.role = role;
 	}
+	
+	@XmlElement
 	public String getUserName() {
 		return userName;
 	}
+	
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	@XmlElement
 	public String getPassword() {
 		return password;
 	}
+	
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	@XmlElement
 	public String getEmail() {
 		return email;
 	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	@XmlElement
 	public String getRole() {
 		return role;
 	}
+	
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
 	public User() {
-		// TODO Auto-generated constructor stub
 		super();
+	}
+	
+	public static String BASE_URL = "http://localhost:8080/SQM4/rest/user/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		
+		String restUrl = BASE_URL + this.getUserName();
+		return new AtomLink(restUrl, "get-user");
+	}
+	
+	public void setLink(AtomLink link){
+		
 	}
 
 }
