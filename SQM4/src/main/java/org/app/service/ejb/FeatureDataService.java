@@ -10,13 +10,11 @@ import org.app.service.entities.Features;
 public interface FeatureDataService {
 	//create or update
 	Features addFeature(Features FeatureToAdd);
-	Features updateFeature(Features FeatureToUpdate);
-	Features closeFeature(Features FeatureToClose);	
 
 	//delete
 	Features deleteFeature(Features FeatureToDelete);	
 	//read
-	Features getFeatureById(String FeatureId);
+	Features getFeatureById(Integer idFeature);
 	Collection<Features> getFeatures();
 
 	Features getFeatureByTitle(String title);
