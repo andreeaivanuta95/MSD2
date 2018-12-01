@@ -9,7 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name="feature") 
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Features implements Serializable{
 	
@@ -35,36 +42,53 @@ public class Features implements Serializable{
 	public Features() {
 		super();
 	}
+	
+	@XmlElement
 	public Integer getIdFeature() {
 		return idFeature;
 	}
+	
 	public void setIdFeature(Integer idFeature) {
 		this.idFeature = idFeature;
 	}
+	
+	@XmlElement
 	public String getTitle() {
 		return title;
 	}
+	
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	@XmlElement
 	public ProjectManager getFeatureOwner() {
 		return featureOwner;
 	}
+	
 	public void setFeatureOwner(ProjectManager featureOwner) {
 		this.featureOwner = featureOwner;
 	}
+	
+	@XmlElement
 	public Projects getFromProject() {
 		return fromProject;
 	}
+	
 	public void setFromProject(Projects fromProject) {
 		this.fromProject = fromProject;
 	}
+	
+	@XmlElementWrapper(name = "bugs") @XmlElement(name = "bugs")
 	public List<Bugs> getBugName() {
 		return bugName;
 	}
+	
 	public void setBugName(List<Bugs> bugName) {
 		this.bugName = bugName;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,6 +100,7 @@ public class Features implements Serializable{
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -112,10 +137,23 @@ public class Features implements Serializable{
 			return false;
 		return true;
 	}
+	
 	@Override
 	public String toString() {
 		return "Features [idFeature=" + idFeature + ", title=" + title + ", featureOwner=" + featureOwner
 				+ ", fromProject=" + fromProject + ", bugName=" + bugName + "]";
+	}
+	
+	public static String BASE_URL = "http://localhost:8080/SQM4/rest/user/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		
+		String restUrl = BASE_URL + this.getIdFeature();
+		return new AtomLink(restUrl, "get-id");
+	}
+	
+	public void setLink(AtomLink link){
+		
 	}
 	
 	
