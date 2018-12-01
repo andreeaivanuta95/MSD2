@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="ALL_USERS")
 //@MappedSuperclass 
-public class User implements Serializable{
+public class User implements Serializable{ 
 	
 	@Id
 	private String userName;
