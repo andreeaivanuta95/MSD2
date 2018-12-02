@@ -1,10 +1,12 @@
 package org.app.service.entities;
 
-import static javax.persistence.CascadeType.ALL;
 
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -28,8 +30,9 @@ public class Features implements Serializable{
 	private ProjectManager featureOwner;
 	@ManyToOne
 	private Projects fromProject;
-	@OneToMany(cascade = ALL)
+	@OneToMany(mappedBy = "fromFeature", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Bugs> bugName;
+	
 	public Features(Integer idFeature, String title, ProjectManager featureOwner, Projects fromProject,
 			List<Bugs> bugName) {
 		super();
@@ -144,7 +147,7 @@ public class Features implements Serializable{
 				+ ", fromProject=" + fromProject + ", bugName=" + bugName + "]";
 	}
 	
-	public static String BASE_URL = "http://localhost:8080/SQM4/rest/feature/";
+	public static String BASE_URL = Bugs.BASE_URL;
 	@XmlElement(name = "link")
 	public AtomLink getLink() throws Exception {
 		

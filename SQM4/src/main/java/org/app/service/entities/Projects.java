@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.*;
 
 import static javax.persistence.CascadeType.ALL;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -31,7 +34,7 @@ public class Projects implements Serializable{
 	@ManyToOne
 	private ProjectManager projectOwner;
 	
-	@OneToMany(cascade = ALL)
+	@OneToMany(mappedBy = "fromProject", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Features> features = new ArrayList<>();
 
 	public Projects(Integer idProject, String title, String description, Date startDate, Date endDate, String status,
@@ -198,8 +201,8 @@ public class Projects implements Serializable{
 				+ ", features=" + features + "]";
 	}
 	
-	//aici cred ca trebuie modificat la url
-	public static String BASE_URL = "http://localhost:8080/SQM4/rest/projects/";
+	//public static String BASE_URL = "http://localhost:8080/SQM4/rest/projects/";
+	public static String BASE_URL = Features.BASE_URL;
 	@XmlElement(name = "link")
 	public AtomLink getLink() throws Exception {
 		
