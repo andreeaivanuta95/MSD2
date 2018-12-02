@@ -31,7 +31,7 @@ public class Features implements Serializable{
 	@ManyToOne
 	private Projects fromProject;
 	@OneToMany(mappedBy = "fromFeature", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Bugs> bugName;
+	private List<Bugs> bugName; 
 	
 	public Features(Integer idFeature, String title, ProjectManager featureOwner, Projects fromProject,
 			List<Bugs> bugName) {

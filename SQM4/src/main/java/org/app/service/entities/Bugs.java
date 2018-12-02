@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 public class Bugs implements Serializable{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue 
 	private Integer idBug;
 	private String title;
 	private String description;

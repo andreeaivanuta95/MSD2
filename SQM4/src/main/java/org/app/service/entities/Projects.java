@@ -2,7 +2,7 @@ package org.app.service.entities;
 
 import java.io.Serializable;
 import java.util.*;
-
+ 
 import static javax.persistence.CascadeType.ALL;
 
 import javax.persistence.CascadeType;
