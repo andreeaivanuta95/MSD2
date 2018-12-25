@@ -81,7 +81,7 @@ public class BugsDataServiceEJB implements BugsDataService{
 		List<Bugs> users = em.createQuery("SELECT b FROM Bugs b", Bugs.class).getResultList();
 		return users;
 	}
-
+	
 	@Override
 	public Bugs getBugByTitle(String title) {
 		return em.createQuery("SELECT b FROM Bugs b WHERE b.title = :title", Bugs.class)
