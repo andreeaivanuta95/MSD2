@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,7 +24,7 @@ import org.app.service.entities.Bugs;
 
 
 @Path("bugs")
-@Stateless 
+@Stateless
 @LocalBean   
 public class BugsDataServiceEJB implements BugsDataService{
 	
@@ -43,10 +44,9 @@ public class BugsDataServiceEJB implements BugsDataService{
 	}
 	
 	@Override
-	@PUT @Path("/{idBug}")
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@POST @Path("/add/")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public Bugs addBug(Bugs bugToAdd) {
 		em.persist(bugToAdd);
 		em.flush();
@@ -71,7 +71,7 @@ public class BugsDataServiceEJB implements BugsDataService{
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Override 
 	public Bugs getBugById(@PathParam("idBug") Integer idBug) {
-		return em.find(Bugs.class,idBug);
+		return em.find(Bugs.class, idBug);
 	}
 	
 	@GET
@@ -82,10 +82,8 @@ public class BugsDataServiceEJB implements BugsDataService{
 		return users;
 	}
 
-	@GET @Path("/{title}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Override
-	public Bugs getBugByTitle(@PathParam("title") String title) {
+	public Bugs getBugByTitle(String title) {
 		return em.createQuery("SELECT b FROM Bugs b WHERE b.title = :title", Bugs.class)
 				 .setParameter("title", title)
 				 .getSingleResult();

@@ -80,7 +80,7 @@ public class UserDataServiceEJB implements UserDataService{
 
 	//custom read
 	@Override
-	public User getUserByEmail(@PathParam("email") String email) {
+	public User getUserByEmail(String email) {
 		return em.createQuery("SELECT u FROM User u WHERE u.email = :email", User.class)
 				 .setParameter("email", email)
 				 .getSingleResult();
