@@ -55,5 +55,3 @@ public class AtomLink implements Serializable{
 }
 
 
-}
-
