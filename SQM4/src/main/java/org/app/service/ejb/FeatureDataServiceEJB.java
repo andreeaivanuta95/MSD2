@@ -17,6 +17,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.Produces;
 import org.app.service.entities.Features;
@@ -34,10 +35,10 @@ public class FeatureDataServiceEJB implements FeatureDataService {
 	public void init() {
 		logger.info("Post-construct init: " + this.em);
 	}
-	@PUT @Path("/{idFeature}")
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	
+	@POST @Path("/add/")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	@Override
 	public Features addFeature(Features FeatureToAdd) {
 		em.persist(FeatureToAdd);
@@ -59,10 +60,8 @@ public class FeatureDataServiceEJB implements FeatureDataService {
 		return FeatureToDelete;
 	}
 
-	@GET @Path("/{idFeature}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Override
-	public Features getFeatureById(@PathParam("idFeature")Integer idFeature) {
+	public Features getFeatureById(@PathParam("idFeature") Integer idFeature) {
 		return em.find(Features.class, idFeature);
 	}
 

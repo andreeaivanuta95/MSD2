@@ -13,6 +13,7 @@ import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -38,10 +39,9 @@ public class ProjectsDataServiceEJB implements ProjectsDataService {
 		}
 		
 	@Override
-	@PUT @Path("/{idProject}")
-	@Consumes({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@POST @Path("/add/")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public Projects addProject(Projects projectToAdd) {
 		em.persist(projectToAdd);
 		em.flush();
@@ -49,11 +49,8 @@ public class ProjectsDataServiceEJB implements ProjectsDataService {
 		return projectToAdd;
 		}
 	
-
-	@GET @Path("/{idProject}")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@Override
-	public Projects getProjectById(@PathParam("idProject") Integer idProject) {
+	public Projects getProjectById(Integer idProject) {
 		return em.find(Projects.class, idProject);
 	}
 	
