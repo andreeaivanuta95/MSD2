@@ -39,11 +39,11 @@ public class AtomLink implements Serializable{
 		return rel;
 	}
 
-	@XmlAttribute(name = "type")
 	public void setRel(String rel) {
 		this.rel = rel;
 	}
 
+	@XmlAttribute(name = "type")
 	public String getType() {
 		return type;
 	}
@@ -51,6 +51,9 @@ public class AtomLink implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
+
+}
+
 
 }
 
