@@ -1,0 +1,32 @@
+<div class="container">
+
+  <form #userForm="ngForm" class="col-md-4" (ngSubmit)='onSubmit()'>
+    <div class="form-group col-md-12">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" name="username" id="username" required [(ngModel)]="model.userName" autocomplete="off">
+    </div>
+
+    <br />
+
+    <div class="form-group col-md-12">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" required id="password" [(ngModel)]="model.password" autocomplete="off">
+    </div>
+
+    <br />
+
+    <div class="form-group col-md-12">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" name="email" id="email" required [(ngModel)]="model.email" autocomplete="off">
+    </div>
+    <br />
+    <div class="form-group col-md-12">
+      <label for="role">Role</label>
+      <select class="form-control" id="role" required [(ngModel)]="model.role" name="role">
+        <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+      </select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success" style='margin-left: 5%' [disabled]="!userForm.form.valid">Submit</button>
+  </form>
+</div>

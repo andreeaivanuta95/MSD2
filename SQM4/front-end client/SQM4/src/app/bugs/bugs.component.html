@@ -1,0 +1,104 @@
+<div class="col-md-4">
+  <br />
+  <h2 style="margin-left: 8%;">Add a new bug:</h2>
+  <app-bugs-form>
+  </app-bugs-form>
+</div>
+<br />
+<div class="col-md-7" style="margin-left: 3%">
+  <h2>View bug details:</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Reports date</th>
+        <th>Status</th>
+        <th>Asignee Username</th>
+        <th>Reporter Username</th>
+        <th>Feature id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>
+          {{bugById?.title}}
+        </td>
+        <td>
+          {{bugById?.description}}
+        </td>
+        <td>
+          {{bugById?.priority}}
+        </td>
+        <td>
+          {{bugById?.reportsDate}}
+        </td>
+        <td>
+          {{bugById?.status}}
+        </td>
+        <td>
+          {{bugById?.asignee}}
+        </td>
+        <td>
+          {{bugById?.reporter}}
+        </td>
+        <td>
+          {{bugById?.fromFeature}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br />
+
+<div class="col-md-7" style="margin-left: 3%">
+  <h2>List of all bugs:</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Reports date</th>
+        <th>Status</th>
+        <th>Asignee Username</th>
+        <th>Reporter Username</th>
+        <th>Feature id</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of bugs; let i=index' (click)='onGetById(item?.idBug)'>
+        <td>{{i + 1}}</td>
+        <td>
+          {{item?.title}}
+        </td>
+        <td>
+          {{item?.description}}
+        </td>
+        <td>
+          {{item?.priority}}
+        </td>
+        <td>
+          {{item?.reportsDate}}
+        </td>
+        <td>
+          {{item?.status}}
+        </td>
+        <td>
+          {{item?.asignee}}
+        </td>
+        <td>
+          {{item?.reporter}}
+        </td>
+        <td>
+          {{item?.fromFeature}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

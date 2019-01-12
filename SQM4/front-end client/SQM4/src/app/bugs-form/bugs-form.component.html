@@ -1,0 +1,63 @@
+<div class="container">
+
+  <form #userForm="ngForm" class="col-md-4" (ngSubmit)='onSubmit()'>
+    <div class="form-group col-md-12">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" name="title" id="title" required [(ngModel)]="model.title" autocomplete="off">
+    </div>
+
+    <br />
+
+    <div class="form-group col-md-12">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" name="description" required id="password" [(ngModel)]="model.description"
+        autocomplete="off">
+    </div>
+
+    <br />
+
+    <div class="form-group col-md-12">
+      <label for="asignee">Asignee</label>
+      <input type="text" class="form-control" name="asignee" id="asignee" required [(ngModel)]="model.asignee"
+        autocomplete="off">
+    </div>
+
+    <br />
+
+    <div class="form-group col-md-12">
+      <label for="reportDate">Report date</label>
+      <input type="datetime-local" class="form-control" name="reportDate" id="reportDate" required [(ngModel)]="model.reportDate"
+        autocomplete="off">
+    </div>
+
+    <br />
+
+    <div class="form-group col-md-12">
+      <label for="reporter">Reporter</label>
+      <input type="text" class="form-control" name="reporter" id="reporter" required [(ngModel)]="model.reporter"
+        autocomplete="off">
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="fromFeature">From Feature</label>
+      <input type="text" class="form-control" name="fromFeature" id="fromFeature" required [(ngModel)]="model.fromFeature"
+        autocomplete="off">
+    </div>
+
+    <br />
+    <div class="form-group col-md-12">
+      <label for="priority">Priority</label>
+      <select class="form-control" id="priority" required [(ngModel)]="model.priority" name="priority">
+        <option *ngFor="let p of priorities" [value]="p">{{p}}</option>
+      </select>
+    </div>
+    <div class="form-group col-md-12">
+      <label for="status">Status</label>
+      <select class="form-control" id="status" required [(ngModel)]="model.status" name="status">
+        <option *ngFor="let s of statuses" [value]="s">{{s}}</option>
+      </select>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success" style='margin-left: 5%' [disabled]="!userForm.form.valid">Submit</button>
+  </form>
+</div>

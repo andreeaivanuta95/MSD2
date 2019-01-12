@@ -1,0 +1,13 @@
+.container{
+    background-color:green;   
+    width: 100%;
+}
+.nav-link{
+    color: wheat;
+}
+.nav-link:hover{
+    background-color: blue;
+}
+.navbar-brand{
+    color: wheat;
+}
